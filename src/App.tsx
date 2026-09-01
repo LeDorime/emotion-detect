@@ -1,6 +1,7 @@
 import { useCallback, useRef, useState } from "react";
 import Webcam, { type WebcamHandle, type WebcamStatus } from "./components/Webcam";
 import EmotionOverlay from "./components/EmotionOverlay";
+import DeepAnalysisButton from "./components/DeepAnalysisButton";
 import PrivacyNote from "./components/PrivacyNote";
 import { useEmotionDetection } from "./lib/useEmotionDetection";
 import { EMOTION_META } from "./lib/emotions";
@@ -61,6 +62,11 @@ export default function App() {
           scores={scores}
           facePresent={facePresent}
           modelStatus={modelStatus}
+        />
+
+        <DeepAnalysisButton
+          getVideo={getVideo}
+          disabled={camStatus !== "active"}
         />
 
         <PrivacyNote />
